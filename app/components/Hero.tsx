@@ -15,7 +15,7 @@ type HeroProps = {
 
 export function Hero({ appName, tagline, description, ctaText }: HeroProps) {
   const [isInView, setIsInView] = useState(false);
-  const { trackCTAClick, trackSocialShare } = useAnalytics();
+  const { trackCTAClick } = useAnalytics();
   
   useEffect(() => {
     // Set animation to start after a short delay when component mounts

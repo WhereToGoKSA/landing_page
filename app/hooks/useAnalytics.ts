@@ -2,6 +2,17 @@
 
 import { useCallback } from 'react';
 
+// Use module augmentation for global window object
+declare global {
+  interface Window {
+    gtag?: (
+      command: string,
+      eventOrTrackingId: string,
+      params?: Record<string, unknown>
+    ) => void;
+  }
+}
+
 type EventType = 
   | 'click_cta' 
   | 'scroll_section' 
@@ -17,7 +28,7 @@ type EventData = {
   eventId?: string;
   value?: string | number;
   url?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 const GA_TRACKING_ID = 'G-SXN25GFEY4'
 // Simple hook to provide analytics tracking methods
@@ -26,7 +37,6 @@ export function useAnalytics() {
   const trackEvent = useCallback((eventType: EventType, eventData?: EventData) => {
     if (typeof window !== 'undefined' && window.gtag) {
       try {
-        // @ts-ignore - gtag is added by Google Analytics script
         window.gtag('event', eventType, eventData);
         console.log(`[Analytics] Tracked event: ${eventType}`, eventData);
       } catch (error) {
@@ -39,7 +49,6 @@ export function useAnalytics() {
   const trackPageView = useCallback((url: string) => {
     if (typeof window !== 'undefined' && window.gtag) {
       try {
-        // @ts-ignore - gtag is added by Google Analytics script
         window.gtag('config', GA_TRACKING_ID, {
           page_path: url,
         });
