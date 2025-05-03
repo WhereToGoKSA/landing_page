@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion, Variants } from 'framer-motion'; // Import Variants
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useAnalytics } from '../hooks/useAnalytics';
 
 type HeroProps = {
   appName: string;
@@ -14,6 +15,7 @@ type HeroProps = {
 
 export function Hero({ appName, tagline, description, ctaText }: HeroProps) {
   const [isInView, setIsInView] = useState(false);
+  const { trackCTAClick, trackSocialShare } = useAnalytics();
   
   useEffect(() => {
     // Set animation to start after a short delay when component mounts
@@ -202,40 +204,24 @@ export function Hero({ appName, tagline, description, ctaText }: HeroProps) {
               </p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <motion.button
                 className="bg-primary hover:bg-accent text-white font-medium py-3 px-8 rounded-full transition-colors text-lg shadow-md shadow-primary/20"
                 variants={buttonVariants}
                 whileHover="hover"
                 whileTap="tap"
-                onClick={() => {
-                  if (window.gtag) {
-                    window.gtag('event', 'click', {
-                      event_category: 'CTA',
-                      event_label: 'Hero CTA',
-                    });
-                  }
-                }}
+                onClick={() => trackCTAClick(ctaText, 'hero')}
               >
                 {ctaText}
-              </motion.button>
-              
-              <motion.button
-                className="border-2 border-primary text-primary hover:text-accent hover:border-accent font-medium py-3 px-8 rounded-full transition-colors text-lg"
-                variants={buttonVariants}
-                whileHover="hover"
-                whileTap="tap"
-              >
-                شاهد الفيديو
               </motion.button>
             </motion.div>
             
             {/* Mobile app stores */}
             <motion.div 
               variants={itemVariants}
-              className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-end"
+              className="mt-8 flex flex-row gap-4 justify-center lg:justify-start"
             >
-              <Link href="#" className="inline-block">
+              <Link href="#" className="inline-block" onClick={() => trackCTAClick('App Store', 'hero')}>
                 <Image 
                   src="https://placehold.co/150x50?text=App+Store" 
                   alt="App Store" 
@@ -244,7 +230,7 @@ export function Hero({ appName, tagline, description, ctaText }: HeroProps) {
                   className="h-12 w-auto"
                 />
               </Link>
-              <Link href="#" className="inline-block">
+              <Link href="#" className="inline-block" onClick={() => trackCTAClick('Play Store', 'hero')}>
                 <Image 
                   src="https://placehold.co/150x50?text=Play+Store" 
                   alt="Play Store" 

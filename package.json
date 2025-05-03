@@ -12,6 +12,7 @@
     "@fontsource/rubik": "^5.2.5",
     "@fontsource/tajawal": "^5.2.5",
     "@next/font": "^14.2.15",
+    "@next/third-parties": "^15.3.1",
     "embla-carousel": "^8.6.0",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",

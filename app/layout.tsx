@@ -3,6 +3,8 @@ import { Tajawal } from "next/font/google";
 import "@fontsource/rubik";
 import "@fontsource/tajawal";
 import "./globals.css";
+import { GoogleAnalytics } from '@next/third-parties/google';
+import ClientAnalyticsWrapper from './components/ClientAnalyticsWrapper';
 
 const tajawal = Tajawal({
   subsets: ["arabic"],
@@ -13,6 +15,10 @@ const tajawal = Tajawal({
 export const metadata: Metadata = {
   title: "علـى ويــن؟ | اكتشف الفعاليات وأماكن الترفيه القريبة منك",
   description: "دليلك ومرجعك لمدن المملكة العربية السعودية. نستكشف ونقيم أفضل التجارب في الفعاليات.",
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
   openGraph: {
     title: "علـى ويــن؟ | اكتشف الفعاليات وأماكن الترفيه القريبة منك",
     description: "دليلك ومرجعك لمدن المملكة العربية السعودية. نستكشف ونقيم أفضل التجارب في الفعاليات.",
@@ -24,6 +30,18 @@ export const metadata: Metadata = {
         alt: "علـى ويــن؟",
       },
     ],
+    type: 'website',
+    locale: 'ar_SA',
+    siteName: 'علـى ويــن؟',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@wheretosa',
+    creator: '@wheretosa',
+  },
+  metadataBase: new URL('https://where-to-go.app'),
+  alternates: {
+    canonical: '/',
   },
 };
 
@@ -35,7 +53,9 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className={`${tajawal.variable} font-tajawal antialiased bg-background`}>
+        <ClientAnalyticsWrapper />
         {children}
+        <GoogleAnalytics gaId="G-XXXXXXXXXX" />
       </body>
     </html>
   );
