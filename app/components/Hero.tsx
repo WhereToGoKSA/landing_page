@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import { motion, Variants } from 'framer-motion'; // Import Variants
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { useAnalytics } from '../hooks/useAnalytics';
+// import Link from 'next/link';
+// import { useAnalytics } from '../hooks/useAnalytics';
 
 type HeroProps = {
   appName: string;
@@ -13,9 +13,9 @@ type HeroProps = {
   ctaText: string;
 };
 
-export function Hero({ appName, tagline, description, ctaText }: HeroProps) {
+export function Hero({ appName, tagline, description,  }: HeroProps) {
   const [isInView, setIsInView] = useState(false);
-  const { trackCTAClick } = useAnalytics();
+  // const { trackCTAClick } = useAnalytics();
   
   useEffect(() => {
     // Set animation to start after a short delay when component mounts
@@ -73,19 +73,19 @@ export function Hero({ appName, tagline, description, ctaText }: HeroProps) {
   };
 
   // Button hover animation
-  const buttonVariants = {
-    initial: { scale: 1 },
-    hover: { 
-      scale: 1.05, 
-      boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.2)",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10
-      }
-    },
-    tap: { scale: 0.95 }
-  };
+  // const buttonVariants = {
+  //   initial: { scale: 1 },
+  //   hover: { 
+  //     scale: 1.05, 
+  //     boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.2)",
+  //     transition: {
+  //       type: "spring",
+  //       stiffness: 400,
+  //       damping: 10
+  //     }
+  //   },
+  //   tap: { scale: 0.95 }
+  // };
 
   // Background circles animation
   const circleVariants = {
@@ -166,13 +166,13 @@ export function Hero({ appName, tagline, description, ctaText }: HeroProps) {
               
               {/* Phone mockup with shadow */}
               <div className="relative mx-auto max-w-[320px]">
-                <div className="absolute inset-0 rounded-[3rem] shadow-2xl shadow-primary/20 transform translate-x-2 translate-y-4 -z-10" />
+                <div className="absolute inset-0 rounded-[3rem]" />
                 <Image
-                  src="https://placehold.co/400x600"
+                  src="/mobile.png"
                   alt="تطبيق على وين"
                   width={400}
                   height={600}
-                  className="rounded-[2.5rem] shadow-lg z-10 relative"
+                  className="rounded-[2.5rem]"
                   priority
                 />
               </div>
@@ -186,11 +186,6 @@ export function Hero({ appName, tagline, description, ctaText }: HeroProps) {
             animate={isInView ? "visible" : "hidden"}
             variants={containerVariants}
           >
-            <motion.div variants={itemVariants}>
-              <h1 className="text-5xl md:text-7xl font-bold mb-4 text-accent arabic-text bg-clip-text text-transparent bg-gradient-to-l from-accent to-accent/80">
-                {appName}
-              </h1>
-            </motion.div>
 
             <motion.div variants={itemVariants}>
               <p className="text-2xl md:text-3xl font-medium mb-6 text-primary">
@@ -198,13 +193,22 @@ export function Hero({ appName, tagline, description, ctaText }: HeroProps) {
               </p>
             </motion.div>
 
+
+            <motion.div variants={itemVariants}>
+              <h1 className="text-5xl md:text-7xl font-bold mb-4 text-accent arabic-text bg-clip-text text-transparent bg-gradient-to-l from-accent to-accent/80">
+                {appName}
+              </h1>
+            </motion.div>
+
+            
+
             <motion.div variants={itemVariants}>
               <p className="text-lg mb-8 leading-relaxed arabic-text max-w-2xl mx-auto lg:mr-0">
                 {description}
               </p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            {/* <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <motion.button
                 className="bg-primary hover:bg-accent text-white font-medium py-3 px-8 rounded-full transition-colors text-lg shadow-md shadow-primary/20"
                 variants={buttonVariants}
@@ -214,10 +218,10 @@ export function Hero({ appName, tagline, description, ctaText }: HeroProps) {
               >
                 {ctaText}
               </motion.button>
-            </motion.div>
+            </motion.div> */}
             
             {/* Mobile app stores */}
-            <motion.div 
+            {/* <motion.div 
               variants={itemVariants}
               className="mt-8 flex flex-row gap-4 justify-center lg:justify-start"
             >
@@ -239,7 +243,7 @@ export function Hero({ appName, tagline, description, ctaText }: HeroProps) {
                   className="h-12 w-auto"
                 />
               </Link>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </div>
       </div>

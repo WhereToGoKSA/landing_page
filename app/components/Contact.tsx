@@ -24,7 +24,7 @@ type ContactProps = {
 
 export function Contact({ title }: ContactProps) {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.6 });
 
   useEffect(() => {
     const scriptId = 'tally-embed-script';
@@ -134,10 +134,10 @@ export function Contact({ title }: ContactProps) {
           animate={isInView ? "visible" : "hidden"}
         >
           <iframe 
-            data-tally-src="https://tally.so/embed/3qNK7Y?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+            data-tally-src="https://tally.so/r/mKgYzK" 
             loading="lazy" 
             width="100%" 
-            height={276} // Changed height to number
+            height={1000} // Changed height to number
             frameBorder="0" 
             marginHeight={0} // Changed to number
             marginWidth={0} // Changed to number

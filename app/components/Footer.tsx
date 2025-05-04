@@ -71,39 +71,39 @@ export function Footer({ appName, social }: FooterProps) {
   };
 
   // Navigation links animations
-  const navContainerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.5
-      }
-    }
-  };
+  // const navContainerVariants = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       staggerChildren: 0.08,
+  //       delayChildren: 0.5
+  //     }
+  //   }
+  // };
 
-  const navItemVariants = {
-    hidden: { opacity: 0, y: -10 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        type: 'spring',
-        stiffness: 200,
-        damping: 12
-      }
-    },
-    hover: {
-      scale: 1.05,
-      y: -2,
-      color: 'var(--accent)',
-      transition: {
-        type: 'spring',
-        stiffness: 300,
-        damping: 10
-      }
-    }
-  };
+  // const navItemVariants = {
+  //   hidden: { opacity: 0, y: -10 },
+  //   visible: { 
+  //     opacity: 1, 
+  //     y: 0,
+  //     transition: {
+  //       type: 'spring',
+  //       stiffness: 200,
+  //       damping: 12
+  //     }
+  //   },
+  //   hover: {
+  //     scale: 1.05,
+  //     y: -2,
+  //     color: 'var(--accent)',
+  //     transition: {
+  //       type: 'spring',
+  //       stiffness: 300,
+  //       damping: 10
+  //     }
+  //   }
+  // };
 
   // Social icons animations
   const socialContainerVariants = {
@@ -178,12 +178,12 @@ export function Footer({ appName, social }: FooterProps) {
     }
   };
 
-  const navItems = [
-    { id: 'hero', label: 'الرئيسية' },
-    { id: 'nearby', label: 'أماكن قريبة' },
-    { id: 'events', label: 'فعاليات' },
-    { id: 'contact', label: 'اكتشف شخصيتك' }
-  ];
+  // const navItems = [
+  //   { id: 'hero', label: 'الرئيسية' },
+  //   { id: 'nearby', label: 'أماكن قريبة' },
+  //   { id: 'events', label: 'فعاليات' },
+  //   { id: 'contact', label: 'اكتشف شخصيتك' }
+  // ];
 
   return (
     <footer className="bg-background text-primary py-16 relative overflow-hidden" ref={footerRef}>
@@ -242,7 +242,7 @@ export function Footer({ appName, social }: FooterProps) {
           </motion.div>
 
           <div className="flex flex-col items-center md:items-end">
-            <motion.nav 
+            {/* <motion.nav 
               className="mb-8"
               variants={navContainerVariants}
             >
@@ -266,7 +266,7 @@ export function Footer({ appName, social }: FooterProps) {
                   </motion.li>
                 ))}
               </ul>
-            </motion.nav>
+            </motion.nav> */}
 
             <motion.div 
               className="flex space-x-4 space-x-reverse"

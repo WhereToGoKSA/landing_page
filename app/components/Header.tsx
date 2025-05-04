@@ -138,8 +138,8 @@ export function Header() {
 
   const navItems = [
     { id: 'hero', label: 'الرئيسية' },
-    { id: 'nearby', label: 'أماكن قريبة' },
-    { id: 'events', label: 'فعاليات' },
+    // { id: 'nearby', label: 'أماكن قريبة' },
+    // { id: 'events', label: 'فعاليات' },
     { id: 'contact', label: 'اكتشف شخصيتك' }
   ];
 
@@ -180,10 +180,10 @@ export function Header() {
               }}
             />
             <Image
-              src="https://placehold.co/150x50"
+              src="/logo.png"
               alt="علـى ويــن؟"
-              width={150}
-              height={50}
+              width={75}
+              height={25}
               priority
               className="transition-transform duration-300 group-hover:scale-105"
             />
