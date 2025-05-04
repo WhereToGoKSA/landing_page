@@ -224,10 +224,10 @@ export function Footer({ appName, social }: FooterProps) {
                 }}
               />
               <Image
-                src="https://placehold.co/150x50"
+                src="/logo.png"
                 alt={appName}
-                width={150}
-                height={50}
+                width={75}
+                height={25}
                 className="transition-all duration-300 group-hover:scale-105"
               />
             </a>
@@ -237,7 +237,7 @@ export function Footer({ appName, social }: FooterProps) {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              دليلك ومرجعك لمدن المملكة العربية السعودية. نستكشف ونقيم أفضل التجارب في الفعاليات.
+              تطبيق جوال يقدم توصيات بأنشطة وتجارب ممتعة بناءً على تفضيلات المستخدم؛ لمساعدة المستخدمين على اكتشاف أماكن جديدة ودعم الشركات الصغيرة
             </motion.p>
           </motion.div>
 
